@@ -6,7 +6,7 @@ public class Product {
 	private int quantity;
 	
 	public Product(String name, double price, int quantity) {
-		this.name = name;
+		this.name = name.toUpperCase();
 		this.price = price;
 		this.quantity = quantity;
 	}
@@ -30,6 +30,9 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	
+	@Override
+	public String toString() {
+		return String.format("Name: %s | Price: $%.2f | Quantity: %d", name, price, quantity);
+	}
 }
 

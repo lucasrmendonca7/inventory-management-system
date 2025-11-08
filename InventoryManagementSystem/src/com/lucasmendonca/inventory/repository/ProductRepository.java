@@ -1,13 +1,16 @@
 package com.lucasmendonca.inventory.repository;
 
 import com.lucasmendonca.inventory.model.Product;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository {
-	private List<Product> products = new ArrayList<>();
-			
+	private List<Product> products;
+	
+	public ProductRepository() {
+		this.products = new ArrayList<>();
+	}
+	
 	public void addProduct(Product product) {
 		products.add(product);
 	}
@@ -23,24 +26,27 @@ public class ProductRepository {
 	}
 	
 	public Product findProductByName(String name) {
-		for (Product p : products) {
-			if (p.getName().equalsIgnoreCase(name)) {
-				return p;
+		for (Product product : products) {
+			if (product.getName().equalsIgnoreCase(name)) {
+				return product;
 			}
 		}
 		return null;
 	}
 	
-	public boolean updateProductQuantity(String name, int  newQuantity) {
-		Product p = findProductByName(name);
-		if (p != null) {
-			p.setQuantity(newQuantity);
-			return true;
+	public void updateProductQuantity(String name, int  newQuantity) {
+		Product product = findProductByName(name);
+		if (product != null) {
+			product.setQuantity(newQuantity);
 		}
-		return false;
-		
 	}
 	
+	public void updatePrice(String name, double newPrice) {
+		Product product = findProductByName(name);
+		if (product != null) {
+			product.setPrice(newPrice);
+		}
+	}
 	public void showProducts() {
 		for (Product product : products) {
 			System.out.println(product);
