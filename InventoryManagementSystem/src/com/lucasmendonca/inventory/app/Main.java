@@ -3,6 +3,7 @@ package com.lucasmendonca.inventory.app;
 import java.util.Scanner;
 import com.lucasmendonca.inventory.repository.ProductRepository;
 import com.lucasmendonca.inventory.service.InventoryService;
+import com.lucasmendonca.inventory.util.*;
 
 public class Main {
 	public static void main(String[] args) {
@@ -26,17 +27,11 @@ public class Main {
 
             switch (option) {
                 case 1:
-                    System.out.print("Product name: ");
-                    String name = sc.nextLine();
+                    String name1 = InputUtils.readString(sc, "Product name: ");
+                    double price = InputUtils.readDouble(sc, "Price: ");
+                    int quantity = InputUtils.readInt(sc, "Quantity: ");
 
-                    System.out.print("Price: ");
-                    double price = sc.nextDouble();
-
-                    System.out.print("Quantity: ");
-                    int quantity = sc.nextInt();
-                    sc.nextLine();
-
-                    service.addProduct(name, price, quantity);
+                    service.addProduct(name1, price, quantity);
                     break;
 
                 case 2:
@@ -44,31 +39,20 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.print("Product name to update: ");
-                    String nameToUpdate = sc.nextLine();
-
-                    System.out.print("New quantity: ");
-                    int newQuantity = sc.nextInt();
-                    sc.nextLine();
-
-                    service.updateProductQuantity(nameToUpdate, newQuantity);
+                	String name2 = InputUtils.readString(sc, "Product name to update: ");
+                	int newQuantity = InputUtils.readInt(sc, "New quantity: ");
+                    service.updateProductQuantity(name2, newQuantity);
                     break;
 
-                    
                 case 4:
-                    System.out.print("Product name to update: ");
-                    String nameToUpdateP = sc.nextLine();
+                	String name3 = InputUtils.readString(sc, "Product name to update: ");
+                	double newPrice = InputUtils.readDouble(sc, "New price: ");
 
-                    System.out.print("New price: ");
-                    double newPrice = sc.nextInt();
-                    sc.nextLine();
-
-                    service.updatePrice(nameToUpdateP, newPrice);
+                    service.updatePrice(name3, newPrice);
                     break;
                 
                 case 5:
-                    System.out.print("Product name to remove: ");
-                    String nameToRemove = sc.nextLine();
+                	String nameToRemove = InputUtils.readString(sc, "Product name to remove: ");
 
                     service.removeProduct(nameToRemove);
                     break;
@@ -78,7 +62,7 @@ public class Main {
                     break;
 
                 default:
-                    System.out.println("Invalid option!");
+                    System.out.println("Invalid option! ");
                     break;
             }
         }
