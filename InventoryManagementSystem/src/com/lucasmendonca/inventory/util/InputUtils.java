@@ -11,7 +11,7 @@ public class InputUtils {
                 System.out.print(message);
                 return sc.nextInt();
             } catch (InputMismatchException e) {
-                System.out.println("❌ Please enter a valid number!");
+                System.out.println("Please enter a valid number!");
                 sc.nextLine(); 
             }
         }
@@ -23,7 +23,7 @@ public class InputUtils {
                 System.out.print(message);
                 return sc.nextDouble();
             } catch (InputMismatchException e) {
-                System.out.println("❌ Please enter a valid number!");
+                System.out.println("Please enter a valid number!");
                 sc.nextLine();
             }
         }
@@ -36,7 +36,7 @@ public class InputUtils {
             if (!input.isBlank()) {
                 return input;
             }
-            System.out.println("⚠️ Please type something!");
+            System.out.println("Please type something!");
         }
     }
 }

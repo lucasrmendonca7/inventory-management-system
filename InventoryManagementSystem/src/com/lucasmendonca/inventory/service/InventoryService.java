@@ -31,14 +31,13 @@ public class InventoryService {
 	}
 
 	public void removeProduct(String name) {
-		Product existing = repository.findProductByName(name);
+		boolean existing = repository.removeProduct(name);
 		
-		if (existing != null) {
+		if (!existing) {
 			System.out.println("Product not found!");
 			return;
 		}
 		
-		repository.removeProduct(name);
 		System.out.println("Product removed successfully!");
 	}
 	

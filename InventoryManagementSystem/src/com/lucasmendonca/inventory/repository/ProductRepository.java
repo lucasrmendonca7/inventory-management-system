@@ -19,7 +19,7 @@ public class ProductRepository {
 		Product found = findProductByName(name);
 		
 		if (found != null) {
-			products.remove(found);
+			this.products.remove(found);
 			return true;
 		}
 		return false;
